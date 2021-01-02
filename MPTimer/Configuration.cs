@@ -16,6 +16,7 @@ namespace MPTimer
         public float boundaryTime = 1.2f;
 
         public bool combatOnly { get; set; } = false;
+        public bool blackMageOnly { get; set; } = true;
 
         public Vector4 leftColor = new Vector4(0.000f, 0.492f, 1.000f, 1.000f);
         public Vector4 rightColor = new Vector4(1.000f, 0.270f, 0.270f, 1.000f);

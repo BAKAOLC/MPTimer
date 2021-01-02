@@ -32,15 +32,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dalamud">
-      <HintPath>C:\Users\Decretum\AppData\Roaming\XIVLauncher\addon\Hooks\Dalamud.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\SNDA\FFXIV\Dalamud\Dalamud.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ImGui.NET">
-      <HintPath>C:\Users\Decretum\AppData\Roaming\XIVLauncher\addon\Hooks\ImGui.NET.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\SNDA\FFXIV\Dalamud\ImGui.NET.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ImGuiScene">
-      <HintPath>C:\Users\Decretum\AppData\Roaming\XIVLauncher\addon\Hooks\ImGuiScene.dll</HintPath>
+      <HintPath>D:\Program Files (x86)\SNDA\FFXIV\Dalamud\ImGuiScene.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
