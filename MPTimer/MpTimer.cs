@@ -81,18 +81,9 @@ namespace MPTimer
 
         private void updateTime(Dalamud.Game.ClientState.Actors.Types.PlayerCharacter pc)
         {
-            if (mpTickTimestamp == 0)
-            {
-                if (pc.CurrentMp - lastMp > 480)
+            if ((mpTickTimestamp == 0 && pc.CurrentMp - lastMp > 550) || (pc.CurrentMp != 10000 && pc.CurrentMp - lastMp > 3000))
                     mpTickTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            }
-            else
-            {
-                if (pc.CurrentMp - lastMp > 2900)
-                    mpTickTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            }
             lastMp = pc.CurrentMp;
         }
-
     }
 }
