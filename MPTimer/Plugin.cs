@@ -88,7 +88,7 @@ namespace MPTimer
                     this.configuration.Save();
                 }
 
-                var mpTimerBlackMageOnly = this.configuration.combatOnly;
+                var mpTimerBlackMageOnly = this.configuration.blackMageOnly;
                 if (ImGui.Checkbox("BLM Only", ref mpTimerBlackMageOnly))
                 {
                     this.mpTimer.blackMageOnly = mpTimerBlackMageOnly;

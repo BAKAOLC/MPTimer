@@ -1,4 +1,6 @@
-﻿using Dalamud.Game.ClientState.Structs.JobGauge;
+﻿using Dalamud.Game.ClientState;
+using Dalamud.Game.ClientState.Actors.Types;
+using Dalamud.Game.ClientState.Structs.JobGauge;
 using Dalamud.Plugin;
 using ImGuiNET;
 using System;
@@ -35,11 +37,10 @@ namespace MPTimer
 
             if (combatOnly)
             {
-                if (!pluginInterface.ClientState.Condition[Dalamud.Game.ClientState.ConditionFlag.InCombat]) { return; }
+                if (!pluginInterface.ClientState.Condition[ConditionFlag.InCombat]) { return; }
             }
 
-            var pc = pluginInterface.ClientState.LocalPlayer;
-            if (pc != null)
+            if (pluginInterface.ClientState.Actors[0] is PlayerCharacter pc)
             {
                 if (blackMageOnly && pc.ClassJob.Id != 25) { return; }
 
@@ -79,7 +80,7 @@ namespace MPTimer
             }
         }
 
-        private void updateTime(Dalamud.Game.ClientState.Actors.Types.PlayerCharacter pc)
+        private void updateTime(PlayerCharacter pc)
         {
             if ((mpTickTimestamp == 0 && pc.CurrentMp - lastMp > 550) || (pc.CurrentMp != 10000 && pc.CurrentMp - lastMp > 3000))
                     mpTickTimestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
