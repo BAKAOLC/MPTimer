@@ -34,7 +34,6 @@ namespace MPTimer
             this.mpTimer.clickThrough = this.configuration.clickThrough;
             this.mpTimer.boundaryTime = this.configuration.boundaryTime;
             this.mpTimer.combatOnly = this.configuration.combatOnly;
-            this.mpTimer.blackMageOnly = this.configuration.blackMageOnly;
             this.mpTimer.leftColor = this.configuration.leftColor;
             this.mpTimer.rightColor = this.configuration.rightColor;
 
@@ -85,14 +84,6 @@ namespace MPTimer
                 {
                     this.mpTimer.combatOnly = mpTimerCombatOnly;
                     this.configuration.combatOnly = mpTimerCombatOnly;
-                    this.configuration.Save();
-                }
-
-                var mpTimerBlackMageOnly = this.configuration.blackMageOnly;
-                if (ImGui.Checkbox("BLM Only", ref mpTimerBlackMageOnly))
-                {
-                    this.mpTimer.blackMageOnly = mpTimerBlackMageOnly;
-                    this.configuration.blackMageOnly = mpTimerBlackMageOnly;
                     this.configuration.Save();
                 }
 

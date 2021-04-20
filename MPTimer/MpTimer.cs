@@ -1,6 +1,5 @@
 ﻿using Dalamud.Game.ClientState;
 using Dalamud.Game.ClientState.Actors.Types;
-using Dalamud.Game.ClientState.Structs.JobGauge;
 using Dalamud.Plugin;
 using ImGuiNET;
 using System;
@@ -21,7 +20,6 @@ namespace MPTimer
         public float boundaryTime;
 
         public bool combatOnly { get; set; } = false;
-        public bool blackMageOnly { get; set; } = true;
 
         public Vector4 leftColor;
         public Vector4 rightColor;
@@ -42,7 +40,7 @@ namespace MPTimer
 
             if (pluginInterface.ClientState.Actors[0] is PlayerCharacter pc)
             {
-                if (blackMageOnly && pc.ClassJob.Id != 25) { return; }
+                if (pc.ClassJob.Id != 25) { return; }
 
                 updateTime(pc);
                 ImGui.SetNextWindowSizeConstraints(new Vector2(170, 10), new Vector2(float.MaxValue, float.MaxValue));
@@ -63,7 +61,7 @@ namespace MPTimer
                     var timestamp = (DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - mpTickTimestamp) % 3000;
                     ImGui.Text(mpTickTimestamp == 0 ? "Uninitialized" : String.Format("{0:N2}", 3 - timestamp / 1000.0));
 
-                    ImGui.GetWindowDrawList().AddRect(new Vector2(basePos.X - 1, basePos.Y - 1), new Vector2(basePos.X + width + 1, basePos.Y + height + 1), ImGui.GetColorU32(new Vector4(0.000f, 0.000f, 0.000f, 1.000f)), 0, ImDrawCornerFlags.None, 1);
+                    ImGui.GetWindowDrawList().AddRect(new Vector2(basePos.X - 1, basePos.Y - 1), new Vector2(basePos.X + width + 1, basePos.Y + height + 1), ImGui.GetColorU32(new Vector4(0.000f, 0.000f, 0.000f, 1.000f)), 0, ImDrawFlags.RoundCornersNone, 1);
 
                     var boundaryPosX = basePos.X + width * (3 - boundaryTime) / 3;
                     ImGui.GetWindowDrawList().AddRectFilled(basePos, new Vector2(boundaryPosX, basePos.Y + height), ImGui.GetColorU32(leftColor));
